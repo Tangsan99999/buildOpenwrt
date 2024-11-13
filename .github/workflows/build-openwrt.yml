@@ -180,6 +180,7 @@ jobs:
       if: github.event.inputs.ssh != 'true'
       run: |
         cd openwrt
+        sed -i 's/;openwrt-23.05//g' feeds.conf.default
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
